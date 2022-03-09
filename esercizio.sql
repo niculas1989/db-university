@@ -1,7 +1,7 @@
 -- 1. Selezionare tutti gli studenti nati nel 1990 (160)
 SELECT `date_of_birth` 
 FROM `students` 
-WHERE (`date_of_birth`) < '1990';
+WHERE YEAR(`date_of_birth`) < 1990;
 
 
 -- 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
@@ -47,7 +47,7 @@ FROM `departments`;
 -- 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 SELECT COUNT(*) AS `teachers_without_phone`
 FROM `teachers`
-WHERE `phone` IS NOT NULL;
+WHERE `phone` IS NULL;
 
 
 
