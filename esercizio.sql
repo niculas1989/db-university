@@ -36,7 +36,7 @@ AND (`date`) = '2020-06-20'
 -- 6. Selezionare tutti i corsi di laurea magistrale (38)
 SELECT * 
 FROM `degrees`
-WHERE `name` LIKE 'Corso di Laurea Magistrale%';
+WHERE `level` = 'magistrale';
 
 
 -- 7. Da quanti dipartimenti è composta l'università? (12)
@@ -58,9 +58,9 @@ WHERE `phone` IS NULL;
 
 -- 1. Contare quanti iscritti ci sono stati ogni anno
 
-SELECT COUNT(*), YEAR(`enrolment_date`) AS `enrolment_year`
+SELECT COUNT(*), YEAR(`enrolment_date`) AS `year`
 FROM `students`
-GROUP BY `enrolment_year`;
+GROUP BY `year`;
 
 -- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
@@ -70,7 +70,7 @@ GROUP BY `office_address`;
 
 -- 3. Calcolare la media dei voti di ogni appello d'esame
 
-SELECT COUNT(*) AS `appeal_count`, `exam_id`, AVG(`vote`)
+SELECT COUNT(*) AS `appeal_count`, `exam_id`, ROUND(AVG(`vote`))
 FROM `exam_student`
 GROUP BY `exam_id`;
 
